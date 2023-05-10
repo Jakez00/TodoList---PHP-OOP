@@ -67,6 +67,40 @@ $(document).on('click','#delete',function(){
       })
     
 })
+$(document).on('click','#complete',function(){
+
+    Swal.fire({
+        title: 'Mark this task complete?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Done it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            var id = $(this).attr('data')
+            $.ajax({
+                url: 'process/todocomplete.php',
+                method: 'POST',
+                data:{id},
+                success: function(response) {
+                        Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Task Completed',
+                        showConfirmButton: false,
+                        timer: 1000
+                        }).then(()=>{
+                            $('#error').text("")
+                            $('#todobody').load('index.php #todoreload')
+                        })
+                }
+            })
+        }
+      })
+    
+})
 
 
 $(document).on('click','.editlist',function(){

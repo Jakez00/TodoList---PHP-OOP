@@ -48,7 +48,7 @@
                     <input class="form-control form-control-lg border-0 rounded" type="text" placeholder="Add new .." id="task">
                 </div>
                 <div class="col-auto m-0 px-2 d-flex align-items-center">
-                    <input type="date" class="form-control form-control-lg" id="taskdate" min="<?php echo date('Y-m-d'); ?>">
+                    <input type="datetime-local" class="form-control form-control-lg" id="taskdate" min="<?php echo date('Y-m-d H:i a'); ?>">
                 </div>
                 <div class="col-auto px-0 mx-0 mr-2">
                     <button type="button" class="btn btn-primary" id="adds">Add</button>
@@ -58,17 +58,17 @@
     </div>
     <!-- Todo list section -->
     <div class="row mx-1 px-5 border-bottom border-top mt-5">
-            <div class="row px-3 align-items-center d-flex col-12 mt-3">
-                <div class="col-4">
-                    <h3 class="px-3 text-primary">TASK</h3>
-                </div>
-                <div class="col-4">
-                    <h3 class="px-3 text-primary">DATE</h3>
-                </div>
-                <div class="col-4 text-center">
-                    <h3 class="px-3 text-primary">ACTION</h3>
-                </div>
+        <div class="row align-items-center d-flex col-12">
+            <div class="col-4 d-flex align-items-center ">
+                <h3 class="px-3 mt-2 text-primary ">TASK</h3>
             </div>
+            <div class="col-4">
+                <h3 class="px-3 mt-2 text-primary">DATE</h3>
+            </div>
+            <div class="col-4 text-center ">
+                <h3 class="px-3 mt-2 text-primary">ACTION</h3>
+            </div>
+        </div>
     </div>
     <div id="todobody">
         <div id="todoreload">
@@ -80,20 +80,26 @@
             
                 if(mysqli_num_rows($q) > 0){
                     while($result = mysqli_fetch_array($q)){
+
                         echo '
                         <div class="row mx-1 px-5 pb-3">
-                            <div class="row px-3 align-items-center rounded d-flex  col-12">
-                                <div class="col-4">
+                            <div class="row align-items-center rounded d-flex col-12">
+                                <div class="col-4 d-flex align-items-center">
                                     <input type="text" id="todoname" class="form-control form-control-lg border-0 edit-todo-input bg-transparent rounded px-3" readonly disabled value="'.$result['name'].'" />
                                 </div>
                                 <div class="col-4">
-                                    <input type="text" id="tododate" class="form-control form-control-lg border-0 edit-todo-input bg-transparent rounded px-3" readonly disabled value="'.date('F d, Y' , strtotime($result["date"])).'" />
-                                </div>
-                                <div class="col-4 text-center">
-                                    <a href="#" data = "'.$result['id'].'" class = "editlist"><i id="editicon" class="fa fa-pencil text-info btn m-0 p-0 m-3"></i></a>
-                                    <a href="#" data = "'.$result['id'].'" id = "delete"><i class="fa fa-trash text-danger btn m-0 p-0"></i></a>
-                                </div>
-                            </div>
+                                    <input type="text" id="tododate" class="form-control form-control-lg border-0 edit-todo-input bg-transparent rounded px-3" readonly disabled value="'.date('F d, Y H:i a' , strtotime($result["date"])).'" />
+                                </div>';
+                        if($result['isComplete'] == 1){
+                            echo '<div class="col-4 d-flex justify-content-center"><div class="w-50 text-center bg-info text-warning">Completed</div></div>';
+                        }else{
+                           echo '<div class="col-4 text-center ">
+                                    <a href="javascript:void(0)" data = "'.$result['id'].'" id = "complete"><i class="fa fa-check text-danger btn "></i></a>
+                                    <a href="javascript:void(0)" data = "'.$result['id'].'" class = "editlist"><i id="editicon" class="fa fa-pencil text-info btn"></i></a>
+                                    <a href="javascript:void(0)" data = "'.$result['id'].'" id = "delete"><i class="fa fa-trash text-danger btn "></i></a>
+                                </div>';
+                        }
+                        echo '</div>
                         </div>';
                     }
                 }

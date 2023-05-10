@@ -23,14 +23,15 @@ DROP TABLE IF EXISTS `todolist`;
 CREATE TABLE `todolist` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
+  `isComplete` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `todolist` */
 
-insert  into `todolist`(`id`,`name`,`date`,`userId`) values (35,'Hugas hugas2','2023-05-09',13),(36,'Birthday ni Adriel','2023-05-02',13);
+insert  into `todolist`(`id`,`name`,`date`,`userId`,`isComplete`) values (35,'Hugas hugas2','2023-05-09 00:00:00',13,NULL),(36,'Birthday ni Adriel','2023-05-02 00:00:00',13,NULL),(39,'Mang laba tayo with BOEK <3','2023-05-09 11:50:00',17,NULL),(44,'Hugas hugas2','2023-05-10 13:11:00',17,1),(45,'wazap','2023-05-30 13:29:00',17,1),(46,'wazap','2023-05-10 13:32:00',17,1),(47,'wa','2023-05-10 13:33:00',17,1),(48,'awd','2023-05-10 13:33:00',17,1),(49,'wew','2023-05-30 13:34:00',17,1),(50,'wazap','2023-05-10 13:35:00',17,1),(51,'awa','2023-05-10 13:36:00',17,1),(52,'wazap','2023-05-10 13:37:00',17,1),(53,'awd','2023-05-10 13:37:00',17,1);
 
 /*Table structure for table `users` */
 
@@ -41,11 +42,11 @@ CREATE TABLE `users` (
   `username` varchar(255) DEFAULT NULL,
   `password` blob DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`username`,`password`) values (13,'ninz00','827ccb0eea8a706c4c34a16891f84e7b');
+insert  into `users`(`id`,`username`,`password`) values (17,'Kaykay','827ccb0eea8a706c4c34a16891f84e7b');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
