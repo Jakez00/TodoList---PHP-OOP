@@ -117,10 +117,17 @@ $(document).on('click','.updatelist',function(){
         method:'POST',
         data:{id:id,name:todoname},
         success:function(response){
-            $(this).closest('.row').find('#todoname').attr('readonly', true).attr('disabled', true);
-            $(this).closest('.row').find('#editicon').removeClass('fa fa-save').addClass('fa fa-pencil')
-            $(this).removeClass('updatelist').addClass('editlist')
-            $('#todobody').load('index.php #todoreload')
+            if(response == '1'){
+                $(this).closest('.row').find('#todoname').attr('readonly', true).attr('disabled', true);
+                $(this).closest('.row').find('#editicon').removeClass('fa fa-save').addClass('fa fa-pencil')
+                $(this).removeClass('updatelist').addClass('editlist')
+                $('#todobody').load('index.php #todoreload')
+            }else{
+                Swal.fire({
+                    title: response,
+                    icon: 'warning'
+                  })
+            }
         }
     })
 

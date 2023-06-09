@@ -48,7 +48,7 @@
                     <input class="form-control form-control-lg border-0 rounded" type="text" placeholder="Add new .." id="task">
                 </div>
                 <div class="col-auto m-0 px-2 d-flex align-items-center">
-                    <input type="datetime-local" class="form-control form-control-lg" id="taskdate" min="<?php echo date('Y-m-d H:i a'); ?>">
+                    <input type="datetime-local" class="form-control form-control-lg" id="taskdate" min="<?php echo date('Y-m-d H:i'); ?>">
                 </div>
                 <div class="col-auto px-0 mx-0 mr-2">
                     <button type="button" class="btn btn-primary" id="adds">Add</button>
@@ -91,7 +91,7 @@
                                     <input type="text" id="tododate" class="form-control form-control-lg border-0 edit-todo-input bg-transparent rounded px-3" readonly disabled value="'.date('F d, Y H:i a' , strtotime($result["date"])).'" />
                                 </div>';
                         if($result['isComplete'] == 1){
-                            echo '<div class="col-4 d-flex justify-content-center"><div class="w-50 text-center bg-info text-warning">Completed</div></div>';
+                            echo '<div class="col-4 d-flex justify-content-center"><div class="w-50 text-center bg-info text-warning rounded-pill">Completed</div></div>';
                         }else{
                            echo '<div class="col-4 text-center ">
                                     <a href="javascript:void(0)" data = "'.$result['id'].'" id = "complete"><i class="fa fa-check text-danger btn "></i></a>

@@ -1,13 +1,10 @@
 <?php
 
 include('../dbconnect.php');
+include('../classes/todoClass.php');
+
+$store = new todo($db);
+
 $id = $_POST['id'];
 
-$query = "SELECT * FROM todolist where id=$id";
-$sql = mysqli_query($db,$query);
-$result =mysqli_fetch_assoc($sql);
-
-if(!empty($result)){
-    $update = "UPDATE todolist SET isComplete = 1 WHERE id=$id";
-    mysqli_query($db,$update);
-}
+$store->todoComplete($id);
