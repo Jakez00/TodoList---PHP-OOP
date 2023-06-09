@@ -35,10 +35,6 @@ class todo{
                 echo 'Error Saving';
             }
 
-            // $sql = "INSERT INTO todolist (name, date,userId) VALUES ('" . $this->getName() . "', '" . $this->getDate() . "','".$_SESSION['userid']."');";
-            // mysqli_query($this->dbconnect,$sql);
-            
-
         }
         else{
             echo 'Fill out all fields';
@@ -68,20 +64,6 @@ class todo{
             echo 'Error Updating';
         }
 
-        // $query = "SELECT * FROM todolist where id=$id";
-        // $sql = mysqli_query($this->dbconnect,$query);
-        // $result =mysqli_fetch_assoc($sql);
-
-        // if(!empty($result)){
-        //     if(!empty($this->name)){
-        //         $update = "UPDATE todolist SET name = '".$this->getName()."' WHERE id=$id";
-        //         mysqli_query($this->dbconnect, $update);
-        //         echo '1';
-        //     }
-        //     else{
-        //         echo 'Empty Name';
-        //     }
-        // }
     }
 
     public function deleteTodo($id){
@@ -99,17 +81,6 @@ class todo{
                 echo 'Error Deleting';
             }
         }
-
-        // $query = "SELECT * FROM todolist where id = $id";
-        // $mysql = mysqli_query($this->dbconnect,$query);
-        // $result = mysqli_fetch_assoc($mysql);
-
-        // if(!empty($result)){
-        //     mysqli_query($this->dbconnect,"DELETE from todolist where id=$id");
-        //     echo 1;
-        // }else{
-        //     echo "Unable to Delete";
-        // }
     }
 
     public function todoComplete($id){
@@ -130,14 +101,6 @@ class todo{
             echo 'No matching row found';
         }
         
-        // $query = "SELECT * FROM todolist where id=$id";
-        // $sql = mysqli_query($this->dbconnect,$query);
-        // $result =mysqli_fetch_assoc($sql);
-
-        // if(!empty($result)){
-        //     $update = "UPDATE todolist SET isComplete = 1 WHERE id=$id";
-        //     mysqli_query($this->dbconnect,$update);
-        // }
     }
 }
 
