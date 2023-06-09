@@ -3,7 +3,6 @@
 class todo{
     public $name;
     public $date;
-    public $completed;
     public $dbconnect;
 
     public function __construct($db){

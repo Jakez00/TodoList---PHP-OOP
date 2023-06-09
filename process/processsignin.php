@@ -2,22 +2,14 @@
 session_start();
 
 include('../dbconnect.php');
+include('../classes/loginClass.php');
+
+$login = new login($db);
 
 $username = trim($_POST['username']);
 $password = trim($_POST['pass']);
 
-$checkuser = "SELECT * FROM users WHERE username='".$username."' and password='".md5($password)."'";
-$sqlcheck = mysqli_query($db,$checkuser);
-$chck = mysqli_fetch_assoc($sqlcheck);
+$login->setUsername($username);
+$login->setPassword($password);
+$login->login();
 
-if(empty($chck)){
-    $_SESSION['Error']="Invalid Credential";
-    header('location:../signin.php');
-    exit();
-}
-else{
-    $_SESSION['isLogin'] = 1;
-    $_SESSION['userid'] = $chck['id'];
-    $_SESSION['username'] = $chck['username'];
-    header('location: ../index.php');
-}
