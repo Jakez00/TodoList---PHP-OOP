@@ -32,9 +32,9 @@
     <!-- App title section -->
     <div class="row m-1 p-4">
         <div class="col">
-            <div class="p-1 h1 text-dark text-center mx-auto display-inline-block">
-                <?php echo $_SESSION['username'] ?> Todo-List
-            </div>
+            
+             <h1 class="p-1 text-dark text-center mx-auto display-inline-block"><span class="text-uppercase text-info"><?php echo $_SESSION['username'] ?></span>  Todo-List</h1>  
+            
         </div>
     </div>
     <!-- Create todo section -->
